@@ -1,101 +1,97 @@
-import Image from "next/image";
+"use client";
+import { useRef } from "react";
+import { Fireworks } from "@fireworks-js/react";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+	const styles = {
+		backgroundImage: "url(/bg-gradient.jpg)",
+		backgroundSize: "cover",
+		backgroundPosition: "center",
+	};
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+	const refFireworks = useRef(null);
+
+	return (
+		<main className="flex items-center justify-center w-full h-full min-h-screen overflow-hidden" style={styles}>
+			{/* Fireworks Component */}
+			<Fireworks
+				className="absolute inset-0"
+				about="Talento Tech Bogotá"
+				ref={refFireworks}
+				options={{
+					autoresize: true,
+					opacity: 0.5,
+					acceleration: 1.05,
+					friction: 0.97,
+					gravity: 1.5,
+					particles: 50,
+					traceLength: 3,
+					traceSpeed: 10,
+					explosion: 5,
+					intensity: 30,
+					flickering: 50,
+					lineStyle: "round",
+					hue: {
+						min: 0,
+						max: 360,
+					},
+					delay: {
+						min: 30,
+						max: 60,
+					},
+					rocketsPoint: {
+						min: 50,
+						max: 50,
+					},
+					lineWidth: {
+						explosion: {
+							min: 1,
+							max: 3,
+						},
+						trace: {
+							min: 1,
+							max: 2,
+						},
+					},
+					brightness: {
+						min: 50,
+						max: 80,
+					},
+					decay: {
+						min: 0.015,
+						max: 0.03,
+					},
+					mouse: {
+						click: false,
+						move: false,
+						max: 1,
+					},
+				}}
+			/>
+
+			{/* Main Content */}
+			<section className="max-w-lg text-center w-full sm:w-auto mx-4">
+				<img src="https://talentotechbogota.co/images/TalentoTech.png" alt="Talento Tech Logo" className="mx-auto mb-4" />
+				<h1 className="text-2xl font-bold text-white mb-4">¡Felices Fiestas y un Próspero Año Nuevo!</h1>
+				<p className="text-white leading-relaxed mb-6">
+					Queridos campistas,
+					<br />
+					En este cierre de año, queremos agradecerles por haber sido parte de Talento Tech Bogotá. Su dedicación, creatividad y esfuerzo han dejado una huella imborrable en nuestra historia.
+				</p>
+				<div className="border-t border-gray-300 pt-4">
+					<p className="text-white italic">&quot;A veces los caminos se separan, pero los recuerdos y aprendizajes nos acompañan para siempre.&quot;</p>
+					<p className="mt-4 text-white">Les deseamos unas fiestas llenas de amor y éxito en sus próximos retos. Aunque no sabemos lo que el futuro nos deparará, siempre llevaremos con nosotros los momentos compartidos.</p>
+				</div>
+				<footer className="mt-6">
+					<p className="text-sm text-white">
+						Con todo nuestro cariño,
+						<br />
+						El equipo de Talento Tech Bogotá
+					</p>
+				</footer>
+				<br />
+				<img src="https://talentotechbogota.co/images/Logo_UT%20BLANCO.png" alt="Unión Temporal Tecnalia Cymetria" className="mx-auto mt-4 w-52" />
+			</section>
+		</main>
+	);
 }
